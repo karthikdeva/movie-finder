@@ -14,7 +14,10 @@
                     },
                     getMovieDetailsById: function(id) {
                         var storedMovies = JSON.parse(localStorage.getItem("recentSearchMovies"));
-                        this.movieList = this.movieList.concat(storedMovies);
+                        if (storedMovies !== null) {
+                            this.movieList = this.movieList.concat(storedMovies);
+                        }
+
                         var selectedMovie = this.movieList.filter(function(v) {
                             return v.id == id;
                         });
@@ -33,11 +36,12 @@
                             movies = JSON.parse(movies);
                         }
                         var isMovieAlreadyExist = movies.filter(function(v) {
-                            return v.id == selectedMovie.id;
+                            return v.id == selectedMovie[0].id;
                         });
                         if (isMovieAlreadyExist.length) {
                             return;
                         }
+
                         if (movies.length > 5) {
                             movies.shift();
                         }
