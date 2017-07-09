@@ -1,0 +1,14 @@
+<div class="details-container">
+    <div class="row">
+        <div class="col-sm-2 col-md-2 col-xs-12">
+            <img ng-src="http://image.tmdb.org/t/p/w185//{{movie.poster_path}}" ng-if="movie.poster_path" alt="{{movie.title}}">
+            <img ng-src="assets/images/avatar-icon.png" ng-if="!movie.poster_path" alt="{{movie.title}}">
+        </div>
+        <div class="col-sm-10 col-md-10 col-xs-12">
+            <h4 ng-bind="movie.original_title"></h4>
+            <p>Release Date:{{movie.release_date}}, Rating:{{movie.vote_average}} /10, Vote:{{movie.vote_count}}</p>
+            <p ng-bind="movie.overview"></p>
+            <a ui-sref="movies" ui-sref-opts="{reload: true}" class="home-icon pull-right fa fa-home"></a>
+        </div>
+    </div>
+</div>

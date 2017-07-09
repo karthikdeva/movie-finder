@@ -1,0 +1,34 @@
+<section class="searchBox-wrapper">
+    <!-- searchBox-->
+    <div class="search-box">
+        <span class="fa fa-search icon-search"></span>
+        <ui-select ng-model="movieName" theme="bootstrap" reset-search-input="false" title="search">
+            <ui-select-match placeholder="search"> {{$item}}</ui-select-match>
+            <ui-select-choices repeat="movie in movies track by $index" refresh="getMovies($select.search)" refresh-delay="0">
+                <a ui-sref="details({id:movie.id})" ui-sref-opts="{reload: true}">
+                    <div class="thump-icon">
+                        <img ng-src="http://image.tmdb.org/t/p/w185//{{movie.poster_path}}" ng-if="movie.poster_path" alt="{{movie.title}}">
+                        <img ng-src="assets/images/avatar-icon.png" ng-if="!movie.poster_path" alt="{{movie.title}}">
+                    </div>
+                    <div class="title-section">
+                        <label ng-bind="movie.title"></label>
+                        <span>, Release Date:{{movie.release_date}},</span>
+                        <span> Rating:{{movie.vote_average}} /10</span>
+                    </div>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+    <!-- Recent search -->
+    <div class="row">
+        <div class="col-md-4" ng-repeat="movie in recentSearchMovies track by $index">
+            <a ui-sref="details({id:movie.id})" ui-sref-opts="{reload: true}" class="thump-container">
+                <div class="image-wrapper">
+                    <img ng-src="http://image.tmdb.org/t/p/w185//{{movie.poster_path}}" ng-if="movie.poster_path" alt="{{movie.title}}">
+                    <img ng-src="assets/images/avatar-icon.png" ng-if="!movie.poster_path" alt="{{movie.title}}">
+                </div>
+                <span class="sub-title" ng-bind="movie.title">                  
+                </span>
+            </a>
+        </div>
+    </div>
+</section>
