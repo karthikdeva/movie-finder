@@ -120,7 +120,6 @@
                     getRecentSearchMovie: function() {
                         var storedMovies = localStorage.getItem("recentSearchMovies");
                         return JSON.parse(storedMovies);
-
                     }
                 }
                 return movieListObj;
