@@ -15,19 +15,22 @@
                         <span>, Release Date:{{movie.release_date}},</span>
                         <span> Rating:{{movie.vote_average}} /10</span>
                     </div>
+                </a>
             </ui-select-choices>
         </ui-select>
     </div>
     <!-- Recent search -->
-    <div class="row">
+    <div class="row" ng-if="recentSearchMovies">
+        <div class="col-md-12">
+            <h2>Recent search</h2>
+        </div>
         <div class="col-md-4" ng-repeat="movie in recentSearchMovies track by $index">
             <a ui-sref="details({id:movie.id})" ui-sref-opts="{reload: true}" class="thump-container">
                 <div class="image-wrapper">
                     <img ng-src="http://image.tmdb.org/t/p/w185//{{movie.poster_path}}" ng-if="movie.poster_path" alt="{{movie.title}}">
                     <img ng-src="assets/images/avatar-icon.png" ng-if="!movie.poster_path" alt="{{movie.title}}">
                 </div>
-                <span class="sub-title" ng-bind="movie.title">                  
-                </span>
+                <span class="sub-title" ng-bind="movie.title"></span>
             </a>
         </div>
     </div>
